@@ -52,48 +52,6 @@ body {
   padding: 2rem 0;
 }
 
-/* --- form --- */
-.reading-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  align-items: center;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1rem;
-  margin-bottom: 2rem;
-}
-
-.reading-form__input {
-  flex: 1 1 140px;
-  padding: 0.55rem 0.7rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 0.95rem;
-}
-
-.reading-form__button {
-  padding: 0.55rem 1.1rem;
-  border: none;
-  border-radius: 8px;
-  background: var(--accent);
-  color: white;
-  font-size: 0.95rem;
-  cursor: pointer;
-}
-
-.reading-form__button:disabled {
-  opacity: 0.6;
-  cursor: default;
-}
-
-.reading-form__error {
-  flex-basis: 100%;
-  color: var(--danger);
-  font-size: 0.85rem;
-}
-
 /* --- cards --- */
 .card-grid {
   display: grid;

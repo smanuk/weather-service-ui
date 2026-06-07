@@ -8,6 +8,12 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
+    // Listen on all interfaces so the dev server is reachable from other hosts
+    // on the network (not just localhost).
+    host: true,
+    // Vite blocks requests whose Host header isn't allow-listed; permit the
+    // custom hostname used to reach this machine.
+    allowedHosts: ["octo.homehack.cc"],
     proxy: {
       "/api": {
         target: "http://localhost:8080",

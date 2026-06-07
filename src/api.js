@@ -14,19 +14,3 @@ export async function fetchAllReadings() {
   }
   return res.json();
 }
-
-/**
- * @param {{ locationName: string, temperature: number, humidity: number }} reading
- * @returns {Promise<Reading>} the recorded reading, stamped with recordedAt.
- */
-export async function submitReading(reading) {
-  const res = await fetch(BASE, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(reading),
-  });
-  if (!res.ok) {
-    throw new Error(`POST ${BASE} failed with ${res.status}`);
-  }
-  return res.json();
-}
