@@ -34,7 +34,7 @@ export default function App() {
     <div className="app">
       <header className="app__header">
         <h1>Weather Service</h1>
-        <p className="app__subtitle">Live readings, last 20 per location</p>
+        <p className="app__subtitle">Live readings, last ~10 minutes per location</p>
       </header>
 
       {error && <p className="app__error">Could not reach the service: {error}</p>}
