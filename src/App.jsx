@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { fetchAllReadings } from "./api.js";
 import LocationCard from "./components/LocationCard.jsx";
-import ReadingForm from "./components/ReadingForm.jsx";
 
 const POLL_INTERVAL_MS = 5000;
 
@@ -35,17 +34,15 @@ export default function App() {
     <div className="app">
       <header className="app__header">
         <h1>Weather Service</h1>
-        <p className="app__subtitle">Live readings, last 20 per location</p>
+        <p className="app__subtitle">Live readings, last ~10 minutes per location</p>
       </header>
-
-      <ReadingForm onSubmitted={refresh} />
 
       {error && <p className="app__error">Could not reach the service: {error}</p>}
 
       {loading ? (
         <p className="app__empty">Loading…</p>
       ) : locations.length === 0 ? (
-        <p className="app__empty">No readings yet. Submit one above to get started.</p>
+        <p className="app__empty">No readings yet.</p>
       ) : (
         <div className="card-grid">
           {locations.map((location) => (
