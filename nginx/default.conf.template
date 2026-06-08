@@ -1,0 +1,24 @@
+server {
+    listen 80;
+    server_name _;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # Reverse-proxy API calls to the weather-service backend. BACKEND_URL is
+    # substituted from the environment at container start (e.g.
+    # http://demo.homehack.cc:8082). proxy_pass has no path, so the original
+    # request URI (/api/readings) is forwarded unchanged.
+    location /api/ {
+        proxy_pass ${BACKEND_URL};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # SPA fallback: serve index.html for client-side routes.
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
